@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>AP Sports — Work, amplified</title>
+<meta name="description" content="Activewear para entrenar y seguir el día. Lanzamiento muy pronto.">
+<meta property="og:title" content="AP Sports — Work, amplified">
+<meta property="og:description" content="Activewear para entrenar y seguir el día. Lanzamiento muy pronto.">
+<meta property="og:image" content="portada.jpg">
+<meta name="theme-color" content="#121212">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23121212'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial' font-size='26' fill='%23fff' text-anchor='middle' letter-spacing='1'%3EAP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Questrial&display=swap">
+<style>
+  :root{
+    --night:#121212; --gray:#828C8E; --smoke:#F3F3F3; --white:#FFFFFF;
+    --line:rgba(243,243,243,.22);
+    --font:'Questrial',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--night);color:var(--smoke);
+    font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{min-height:100%;display:grid;grid-template-columns:1fr 1fr}
+  @media (max-width:860px){.wrap{grid-template-columns:1fr}}
+
+  /* ---------- imagen ---------- */
+  .art{position:relative;background:#1a1a1a;overflow:hidden}
+  .art img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+  @media (max-width:860px){.art{aspect-ratio:4/5}}
+
+  /* ---------- contenido ---------- */
+  .panel{
+    display:flex;flex-direction:column;justify-content:center;gap:clamp(1.6rem,4vw,2.6rem);
+    padding:clamp(2rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);
+  }
+  .mark{
+    font-size:.8rem;letter-spacing:.42em;text-transform:uppercase;color:var(--white);margin:0;
+  }
+  h1{
+    margin:0;font-weight:400;letter-spacing:-.01em;
+    font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.05;color:var(--white);
+  }
+  .lede{margin:.9rem 0 0;max-width:34ch;color:var(--smoke)}
+  .soon{
+    margin:.7rem 0 0;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gray);
+  }
+
+  /* ---------- formulario ---------- */
+  form{display:flex;flex-direction:column;gap:1.15rem;max-width:26rem}
+  .field{display:flex;flex-direction:column;gap:.35rem}
+  label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+  input,select{
+    font-family:var(--font);font-size:1rem;color:var(--white);
+    background:transparent;border:0;border-bottom:1px solid var(--line);
+    padding:.55rem 0;border-radius:0;appearance:none;
+  }
+  select{background-image:linear-gradient(transparent,transparent)}
+  option{color:#111}
+  input:focus-visible,select:focus-visible{outline:none;border-bottom-color:var(--white)}
+  input::placeholder{color:rgba(243,243,243,.35)}
+
+  .consent{display:flex;gap:.7rem;align-items:flex-start;font-size:.82rem;color:var(--gray);line-height:1.45}
+  .consent input{
+    appearance:none;width:1.05rem;height:1.05rem;flex:0 0 auto;margin-top:.15rem;
+    border:1px solid var(--line);background:transparent;border-radius:0;padding:0;
+  }
+  .consent input:checked{background:var(--white);border-color:var(--white)}
+  .consent a{color:var(--smoke)}
+
+  button{
+    font-family:var(--font);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
+    background:var(--white);color:var(--night);border:0;padding:1.05rem 1.5rem;cursor:pointer;
+    transition:opacity .15s ease;
+  }
+  button:hover{opacity:.86}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  button:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+
+  .msg{font-size:.85rem;color:var(--gray);min-height:1.2em}
+  .msg.err{color:#E5A3A3}
+
+  /* ---------- gracias ---------- */
+  .done{display:none;flex-direction:column;gap:1.1rem;max-width:26rem}
+  .done h2{margin:0;font-weight:400;font-size:clamp(1.5rem,4vw,2rem);color:var(--white);line-height:1.15}
+  .done a.ig{
+    align-self:flex-start;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--night);background:var(--white);padding:.95rem 1.4rem;text-decoration:none;
+  }
+  body.sent form{display:none}
+  body.sent .done{display:flex}
+
+  footer{
+    display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.78rem;color:var(--gray);
+    padding-top:1.2rem;border-top:1px solid var(--line);
+  }
+  footer a{color:var(--gray);text-decoration:none}
+  footer a:hover{color:var(--smoke)}
+  .preview{font-size:.72rem;color:#E5C08A;letter-spacing:.06em}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="art">
+    <img src="portada.jpg" alt="Modelo con conjunto de AP Sports en exterior">
+  </div>
+
+  <div class="panel">
+    <div>
+      <p class="mark">AP Sports</p>
+      <h1>Work,<br>amplified.</h1>
+      <p class="lede">Activewear para entrenar y seguir el día.</p>
+      <p class="soon">Lanzamiento muy pronto</p>
+    </div>
+
+    <form id="f" novalidate>
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="whatsapp">WhatsApp <span style="text-transform:none;letter-spacing:0">(opcional)</span></label>
+        <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+57">
+      </div>
+      <div class="field">
+        <label for="ciudad">Ciudad</label>
+        <select id="ciudad" name="ciudad" required>
+          <option value="" selected>Elegí una</option>
+          <option value="bogota">Bogotá</option>
+          <option value="medellin">Medellín</option>
+          <option value="otra-colombia">Otra en Colombia</option>
+          <option value="exterior">Fuera de Colombia</option>
+        </select>
+      </div>
+
+      <label class="consent" for="datos">
+        <input id="datos" name="datos" type="checkbox">
+        <span>Autorizo a AP Sports a tratar mis datos para avisarme del lanzamiento, según su <a href="../politica-de-datos/">política de datos</a>.</span>
+      </label>
+
+      <button id="btn" type="submit">Avísame del lanzamiento</button>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="done" id="done">
+      <h2>Listo. Te avisamos primero.</h2>
+      <a class="ig" href="https://instagram.com/" target="_blank" rel="noopener">Seguir en Instagram</a>
+    </div>
+
+    <footer>
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="../politica-de-datos/">Política de datos</a>
+    </footer>
+  </div>
+</div>
+
+<script>
+// ----- Configuración: llenar antes de publicar -----
+const CONFIG = {
+  SUPABASE_URL: "",       // https://xxxx.supabase.co
+  SUPABASE_ANON_KEY: "",  // clave anon (pública, solo inserta)
+  META_PIXEL_ID: "",      // opcional
+  PROYECTO: "ap-sports"
+};
+
+const q = new URLSearchParams(location.search);
+const SRC = {
+  utm_source:   q.get("utm_source")   || (document.referrer ? new URL(document.referrer).hostname : "directo"),
+  utm_medium:   q.get("utm_medium")   || "",
+  utm_campaign: q.get("utm_campaign") || ""
+};
+
+// ----- Los 5 eventos: acá aplican visit, lead y source -----
+window.dataLayer = window.dataLayer || [];
+function track(evento, extra){
+  window.dataLayer.push(Object.assign({event: evento, source: SRC.utm_source, proyecto: CONFIG.PROYECTO}, extra||{}));
+  if (window.fbq) fbq("trackCustom", evento, {source: SRC.utm_source});
+}
+
+if (CONFIG.META_PIXEL_ID){
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', CONFIG.META_PIXEL_ID); fbq('track','PageView');
+}
+track("visit");
+
+const form = document.getElementById("f");
+const btn  = document.getElementById("btn");
+const msg  = document.getElementById("msg");
+
+if (!CONFIG.SUPABASE_URL || !CONFIG.SUPABASE_ANON_KEY){
+  const p = document.createElement("p");
+  p.className = "preview";
+  p.textContent = "Vista previa: el formulario todavía no guarda datos.";
+  form.appendChild(p);
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  msg.className = "msg"; msg.textContent = "";
+
+  const nombre = form.nombre.value.trim();
+  const email  = form.email.value.trim();
+  const ciudad = form.ciudad.value;
+
+  if (!nombre)  return fail("Falta tu nombre.");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return fail("Revisá el email.");
+  if (!ciudad)  return fail("Elegí una ciudad.");
+  if (!form.datos.checked) return fail("Necesitamos tu autorización para escribirte.");
+
+  const lead = {
+    nombre, email, ciudad,
+    whatsapp: form.whatsapp.value.trim() || null,
+    utm_source: SRC.utm_source,
+    utm_medium: SRC.utm_medium,
+    utm_campaign: SRC.utm_campaign,
+    autoriza_datos: true
+  };
+
+  if (!CONFIG.SUPABASE_URL || !CONFIG.SUPABASE_ANON_KEY){
+    track("lead", {modo: "vista-previa"});
+    document.body.classList.add("sent");
+    return;
+  }
+
+  btn.disabled = true; msg.textContent = "Enviando…";
+  try {
+    const r = await fetch(CONFIG.SUPABASE_URL + "/rest/v1/leads", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": CONFIG.SUPABASE_ANON_KEY,
+        "Authorization": "Bearer " + CONFIG.SUPABASE_ANON_KEY,
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify(lead)
+    });
+    if (!r.ok) throw new Error(await r.text());
+    track("lead");
+    document.body.classList.add("sent");
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    fail("No se pudo enviar. Intentá de nuevo.");
+  }
+
+  function fail(t){ msg.className = "msg err"; msg.textContent = t; btn.disabled = false; }
+});
+
+function fail(t){ msg.className = "msg err"; msg.textContent = t; btn.disabled = false; }
+</script>
+</body>
+</html>
