@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Dinámica de referido grupal para Rasca Salinera — Zipaquirá, 5 de diciembre de 2026.">
+<meta property="og:title" content="La Mesa · Rasca Salinera">
+<meta property="og:description" content="Dinámica de referido grupal ligada al arco de marca: tierra, trabajo, licor, fiesta.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0808">
+<title>La Mesa · Rasca Salinera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+  :root{
+    --noir:#0E0E0E;
+    --tierra:#390007;
+    --ambar:#BD6014;
+    --oro:#EBB314;
+    --champagne:#E5C8B6;
+
+    --ground:#0B0808;
+    --surface:#140D0D;
+    --surface-2:#1C1211;
+    --line:rgba(229,200,182,.14);
+    --line-strong:rgba(235,179,20,.32);
+    --ink:#E5C8B6;
+    --ink-dim:#A18779;
+    --ink-faint:#7A655B;
+
+    --display:'Yeseva One','Playfair Display',Georgia,'Times New Roman',serif;
+    --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+
+    --step--1:clamp(.72rem,.7rem + .1vw,.78rem);
+    --step-0:clamp(.95rem,.92rem + .15vw,1.02rem);
+    --step-1:clamp(1.1rem,1.02rem + .35vw,1.3rem);
+    --step-2:clamp(1.5rem,1.25rem + 1.1vw,2.1rem);
+    --step-3:clamp(2rem,1.5rem + 2.2vw,3.4rem);
+    --step-4:clamp(2.8rem,1.7rem + 4.6vw,5.6rem);
+
+    --wrap:min(100% - 2.5rem, 68rem);
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:var(--step-0);
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    margin:0;
+    overflow-x:hidden;
+  }
+
+  .wrap{width:var(--wrap);margin-inline:auto}
+
+  section{padding-block:clamp(3.5rem,8vw,7rem)}
+
+  h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.04}
+
+  .eyebrow{
+    font-family:var(--body);
+    font-size:var(--step--1);
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--oro);
+    margin:0 0 1.1rem;
+  }
+  .eyebrow.muted{color:var(--ink-faint)}
+
+  p{margin:0 0 1.1rem;max-width:62ch}
+  p:last-child{margin-bottom:0}
+  strong{color:var(--oro);font-weight:600}
+  em{color:var(--champagne);font-style:italic}
+
+  /* ---------- PORTADA ---------- */
+  .cover{
+    position:relative;
+    padding-block:clamp(4rem,11vw,8.5rem) clamp(3.5rem,8vw,6rem);
+    background:
+      radial-gradient(120% 90% at 50% 118%, rgba(235,179,20,.20) 0%, rgba(189,96,20,.10) 34%, transparent 66%),
+      linear-gradient(178deg, var(--noir) 0%, var(--tierra) 128%);
+    border-bottom:1px solid var(--line-strong);
+    overflow:hidden;
+  }
+  .cover::after{
+    content:"";
+    position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);
+    width:min(92%,50rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--oro),transparent);
+  }
+  .brandline{
+    font-family:var(--body);
+    font-size:var(--step--1);
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 clamp(2rem,5vw,3.2rem);
+  }
+  .cover h1{
+    font-size:var(--step-4);
+    color:var(--oro);
+    letter-spacing:-.005em;
+    margin-bottom:1.2rem;
+  }
+  .cover .sub{
+    font-size:var(--step-1);
+    color:var(--champagne);
+    max-width:34ch;
+    margin-bottom:clamp(2.2rem,5vw,3rem);
+    line-height:1.45;
+  }
+  .coverfacts{
+    display:flex;flex-wrap:wrap;gap:.6rem 2.4rem;
+    padding-top:1.5rem;
+    border-top:1px solid var(--line);
+    font-size:var(--step--1);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  .coverfacts b{color:var(--champagne);font-weight:600}
+
+  /* ---------- PROBLEMA ---------- */
+  .compare{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:2.5rem;
+  }
+  .compare > div{background:var(--surface);padding:1.6rem 1.5rem}
+  .compare .lead{background:var(--surface-2)}
+  .compare h3{
+    font-family:var(--body);font-size:var(--step--1);font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:1.1rem;
+  }
+  .compare .lead h3{color:var(--oro)}
+  .compare ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem}
+  .compare li{font-size:var(--step-0);color:var(--ink-dim);line-height:1.5}
+  .compare .lead li{color:var(--champagne)}
+
+  blockquote{
+    margin:2.5rem 0 0;
+    padding:1.6rem 0 1.6rem 1.7rem;
+    border-left:2px solid var(--oro);
+    font-family:var(--display);
+    font-size:var(--step-2);
+    line-height:1.25;
+    color:var(--champagne);
+    max-width:26ch;
+  }
+  blockquote cite{
+    display:block;margin-top:1rem;
+    font-family:var(--body);font-size:var(--step--1);font-style:normal;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+  }
+
+  /* ---------- TRANSMUTACIÓN ---------- */
+  .transmute{
+    background:linear-gradient(180deg, var(--ground) 0%, #160A0B 40%, #1E0D09 100%);
+    border-block:1px solid var(--line);
+  }
+  .arc{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:2.8rem;
+  }
+  .step{
+    padding:1.7rem 1.3rem 1.9rem;
+    display:flex;flex-direction:column;gap:.85rem;
+    position:relative;
+    background:var(--surface);
+  }
+  .step:nth-child(1){background:#120A0A}
+  .step:nth-child(2){background:#1E0C0A}
+  .step:nth-child(3){background:#2E1109}
+  .step:nth-child(4){background:#3D1B06}
+  .step::before{
+    content:"";position:absolute;inset:0 0 auto;height:3px;
+  }
+  .step:nth-child(1)::before{background:var(--noir);box-shadow:inset 0 0 0 1px rgba(229,200,182,.2)}
+  .step:nth-child(2)::before{background:var(--tierra)}
+  .step:nth-child(3)::before{background:var(--ambar)}
+  .step:nth-child(4)::before{background:var(--oro)}
+
+  .step .moment{
+    font-family:var(--body);font-size:var(--step--1);font-weight:700;
+    letter-spacing:.24em;text-transform:uppercase;
+  }
+  .step:nth-child(1) .moment{color:var(--ink-faint)}
+  .step:nth-child(2) .moment{color:#B4705C}
+  .step:nth-child(3) .moment{color:var(--ambar)}
+  .step:nth-child(4) .moment{color:var(--oro)}
+
+  .step .count{
+    font-family:var(--display);
+    font-size:clamp(2.4rem,5.5vw,3.6rem);
+    line-height:.9;
+    color:var(--champagne);
+    font-variant-numeric:tabular-nums;
+  }
+  .step:nth-child(4) .count{color:var(--oro)}
+  .step .count span{
+    display:block;font-family:var(--body);font-size:var(--step--1);
+    font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);margin-top:.5rem;
+  }
+  .step .means{font-size:var(--step--1);line-height:1.5;color:var(--ink-dim);margin:0}
+  .step .gets{
+    font-size:var(--step-0);line-height:1.45;color:var(--champagne);
+    margin:0;padding-top:.85rem;border-top:1px solid var(--line);
+  }
+  .step:nth-child(3) .gets,.step:nth-child(4) .gets{color:var(--oro);font-weight:500}
+
+  .arcnote{
+    margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--line);
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.8rem;
+  }
+  .arcnote p{margin:0;font-size:var(--step-0)}
+
+  /* ---------- CARAS ---------- */
+  .faces{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2.5rem}
+  .face{
+    background:var(--surface);
+    display:grid;grid-template-columns:5.5rem 1fr minmax(0,1.4fr);
+    gap:1.4rem;align-items:center;
+    padding:1.35rem 1.5rem;
+  }
+  .face .pct{
+    font-family:var(--display);font-size:var(--step-2);color:var(--oro);
+    line-height:1;font-variant-numeric:tabular-nums;
+  }
+  .face .who{display:flex;flex-direction:column;gap:.2rem}
+  .face .name{font-family:var(--display);font-size:var(--step-1);color:var(--champagne)}
+  .face .seg{font-size:var(--step--1);color:var(--ink-faint);letter-spacing:.1em;text-transform:uppercase}
+  .face .copy{font-family:var(--display);font-size:var(--step-1);color:var(--ink-dim);line-height:1.3}
+  .face:first-child{background:var(--surface-2)}
+  .face:first-child .copy{color:var(--champagne)}
+
+  /* ---------- BOTELLA ---------- */
+  .bottle{
+    background:
+      radial-gradient(90% 120% at 82% 50%, rgba(235,179,20,.13) 0%, transparent 58%),
+      var(--tierra);
+    border-block:1px solid var(--line-strong);
+  }
+  .bottle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:clamp(2rem,5vw,3.5rem);align-items:start}
+  .econ{border:1px solid var(--line);border-collapse:collapse;width:100%;font-size:var(--step--1)}
+  .econ th,.econ td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--line)}
+  .econ thead th{
+    font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);font-size:var(--step--1);
+  }
+  .econ thead th:last-child{color:var(--oro)}
+  .econ tbody th{font-weight:400;color:var(--ink-dim)}
+  .econ td{color:var(--champagne)}
+  .econ td:last-child{color:var(--oro);font-weight:600}
+  .econ tr:last-child td,.econ tr:last-child th{border-bottom:none}
+
+  .bigline{
+    font-family:var(--display);
+    font-size:var(--step-2);
+    line-height:1.2;
+    color:var(--oro);
+    max-width:22ch;
+    margin:0 0 1.4rem;
+  }
+
+  /* ---------- REGLA ECONÓMICA ---------- */
+  .formula{
+    font-family:var(--display);
+    font-size:var(--step-1);
+    color:var(--oro);
+    margin:2.2rem 0 0;
+    padding:1.2rem 1.4rem;
+    border:1px solid var(--line-strong);
+    background:var(--surface);
+    max-width:none;
+    text-align:center;
+    letter-spacing:.01em;
+  }
+  .ledger{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);
+    margin-top:1px;
+  }
+  .ledger .col{background:var(--surface);padding:1.5rem}
+  .ledger h3{
+    font-family:var(--body);font-size:var(--step-0);font-weight:600;
+    letter-spacing:.04em;margin-bottom:.5rem;line-height:1.3;
+  }
+  .ledger .bad h3{color:#C4564A}
+  .ledger .good h3{color:var(--oro)}
+  .ledger .colnote{font-size:var(--step--1);color:var(--ink-faint);margin:0 0 1.1rem;max-width:none}
+  .ledger ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45rem}
+  .ledger li{font-size:var(--step-0);color:var(--ink-dim);padding-left:1.1rem;position:relative}
+  .ledger li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%}
+  .ledger .bad li::before{background:#C4564A}
+  .ledger .good li::before{background:var(--oro)}
+
+  .prizes{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2.4rem;
+  }
+  .prize{background:var(--surface);padding:1.4rem 1.4rem 1.5rem;display:flex;flex-direction:column;gap:.5rem}
+  .prize .cost{
+    font-family:var(--display);font-size:var(--step-1);color:var(--oro);
+    line-height:1;font-variant-numeric:tabular-nums;
+  }
+  .prize .pname{font-size:var(--step-0);color:var(--champagne);font-weight:500;line-height:1.35}
+  .prize p{font-size:var(--step--1);color:var(--ink-dim);margin:0;line-height:1.55;max-width:none}
+
+  /* ---------- CIERRE ---------- */
+  .closing{background:var(--surface);border-top:1px solid var(--line-strong);padding-block:0}
+
+  footer{
+    padding-block:2.5rem 3.5rem;
+    border-top:1px solid var(--line);
+    font-size:var(--step--1);
+    color:var(--ink-faint);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between;
+  }
+
+  .lede{font-size:var(--step-1);color:var(--champagne);max-width:52ch;line-height:1.55}
+
+  h2{font-size:var(--step-3);color:var(--champagne);margin-bottom:1.5rem;max-width:20ch}
+  .transmute h2,.bottle h2{color:var(--oro)}
+
+  @media (max-width:760px){
+    .arc{grid-template-columns:repeat(2,1fr)}
+    .face{grid-template-columns:4rem 1fr;gap:1rem .9rem}
+    .face .copy{grid-column:1 / -1;font-size:var(--step-0);padding-top:.4rem;border-top:1px solid var(--line)}
+  }
+  @media (max-width:440px){
+    .arc{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+  }
+
+  /* ---------- IMPRESIÓN / PDF ---------- */
+  @page{size:A4;margin:0}
+  @media print{
+    :root{--wrap:min(100% - 18mm, 100%)}
+    html,body{background:var(--ground) !important}
+    body{
+      font-size:10.5pt;line-height:1.55;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    }
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+
+    section,.cover{
+      break-inside:avoid;page-break-inside:avoid;
+      break-after:page;page-break-after:always;
+      padding-block:16mm;
+      min-height:auto;
+    }
+    .closing{break-after:auto;page-break-after:auto;padding-block:0;break-inside:avoid}
+    section:last-of-type{break-after:auto;page-break-after:auto}
+    section:nth-last-of-type(2){break-after:auto;page-break-after:auto}
+
+    .cover{padding-block:34mm 20mm}
+    .cover h1{font-size:62pt}
+    .cover .sub{font-size:15pt}
+    h2{font-size:26pt;margin-bottom:10pt}
+    .lede{font-size:12pt}
+    .eyebrow{font-size:7.5pt;margin-bottom:8pt}
+    p{margin-bottom:8pt}
+
+    .arc{grid-template-columns:repeat(4,1fr)}
+    .step .count{font-size:30pt}
+    .step{padding:12pt 10pt 14pt}
+    .step .means,.step .gets{font-size:8.5pt}
+
+    .face{grid-template-columns:4.5rem 1fr 1.4fr;padding:10pt 12pt}
+    .face .copy{font-size:12pt}
+
+    .formula{font-size:14pt;padding:10pt}
+    .prizes{grid-template-columns:repeat(3,1fr)}
+    .prize{padding:10pt}
+    .prize p{font-size:8pt}
+    .ledger{grid-template-columns:repeat(2,1fr)}
+
+    .bottle-grid{grid-template-columns:1fr 1fr;gap:14mm}
+    .econ th,.econ td{padding:6pt 8pt;font-size:8.5pt}
+
+    blockquote{font-size:20pt;margin-top:14pt}
+    .compare{margin-top:12pt}
+    .compare > div{padding:12pt}
+
+    footer{padding-block:12pt 14pt;font-size:7.5pt}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <p class="brandline">Rasca Salinera · Dinámica de activación</p>
+    <h1>La Mesa</h1>
+    <p class="sub">El referido no tiene que inventar un comportamiento. Tiene que premiar el que ya existe.</p>
+    <div class="coverfacts">
+      <span>Sábado <b>5 de diciembre de 2026</b></span>
+      <span>Zipaquirá · <b>Sabana Centro</b></span>
+      <span>Jhonny Rivera · <b>Jhon Alex Castaño</b></span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">El punto de partida</p>
+    <h2>Nadie viene solo a una farra.</h2>
+    <p class="lede">Casi todo programa de referidos premia al individuo: <em>trae un amigo y ambos tienen descuento</em>. Funciona donde la compra es individual. Acá la compra ya es grupal, y eso cambia qué hay que premiar.</p>
+
+    <div class="compare">
+      <div>
+        <h3>Referido individual</h3>
+        <ul>
+          <li>Trae a un amigo</li>
+          <li>Dos boletas</li>
+          <li>Descuento chico y parejo</li>
+          <li>Premia a uno, deja afuera al grupo</li>
+          <li>Pide algo que la gente no hacía</li>
+        </ul>
+      </div>
+      <div class="lead">
+        <h3>La Mesa</h3>
+        <ul>
+          <li>Arma tu mesa</li>
+          <li>Cuatro, seis, diez boletas</li>
+          <li>El precio baja porque la mesa creció</li>
+          <li>Premia al grupo entero</li>
+          <li>Premia lo que la gente ya hacía</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote>
+      La música popular se consume en grupo. Ir solo no es común.
+      <cite>Perfiles psicológicos · valores transversales</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="transmute">
+  <div class="wrap">
+    <p class="eyebrow">La mecánica es la narrativa</p>
+    <h2>La mesa que crece es la transmutación.</h2>
+    <p class="lede">El concepto de la marca no es un eslogan: es un arco. <strong>Tierra, trabajo, licor, fiesta.</strong> Una mesa que pasa de dos a diez recorre exactamente ese arco, en el mismo orden. La mecánica y la narrativa son la misma cosa.</p>
+
+    <div class="arc">
+      <div class="step">
+        <span class="moment">Tierra</span>
+        <span class="count">2<span>en la mesa</span></span>
+        <p class="means">El que llega con lo puesto. Todavía no hay nada más que la intención.</p>
+        <p class="gets">Precio de preventa asegurado</p>
+      </div>
+      <div class="step">
+        <span class="moment">Trabajo</span>
+        <span class="count">4<span>en la mesa</span></span>
+        <p class="means">El esfuerzo de convocar. Alguien se tomó el trabajo de juntar a los suyos.</p>
+        <p class="gets">Precio por persona baja · entrada anticipada, quedan juntos</p>
+      </div>
+      <div class="step">
+        <span class="moment">Licor</span>
+        <span class="count">6<span>en la mesa</span></span>
+        <p class="means">Acá ocurre la transmutación. El trabajo se convierte en licor, sobre la mesa.</p>
+        <p class="gets">Botella en la mesa · mesa señalizada con su nombre</p>
+      </div>
+      <div class="step">
+        <span class="moment">Fiesta</span>
+        <span class="count">10<span>en la mesa</span></span>
+        <p class="means">La mesa completa. El esfuerzo se vuelve visible, que es lo que la marca prometió.</p>
+        <p class="gets">Nombre en pantalla · mención desde tarima · foto oficial · ruta desde su municipio · armador gratis</p>
+      </div>
+    </div>
+
+    <div class="arcnote">
+      <p><strong>No es una metáfora pegada encima.</strong> El brandbook dice que todo sacrificio busca su transmutación: la tierra se convierte en oro, el trabajo en licor, y el licor, al final de la jornada, en fiesta.</p>
+      <p>Por eso cada pieza de campaña puede contar <em>las dos cosas a la vez</em>: qué gana la mesa, y qué es la marca. Cuatro piezas, un solo relato.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Cuatro públicos, un motor</p>
+    <h2>La misma mecánica, cuatro caras.</h2>
+    <p class="lede">No son cuatro campañas. Es una campaña con cuatro nombres y cuatro copys — que es lo único que una persona sola puede operar bien.</p>
+
+    <div class="faces">
+      <div class="face">
+        <span class="pct">45%</span>
+        <span class="who"><span class="name">La Cuadrilla</span><span class="seg">Trabajador de la Sabana</span></span>
+        <span class="copy">«Los que sudan juntos, cantan juntos.»</span>
+      </div>
+      <div class="face">
+        <span class="pct">30%</span>
+        <span class="who"><span class="name">Las Comadres</span><span class="seg">La parrandera del pueblo</span></span>
+        <span class="copy">«Armá el plan. Vos ponés la mesa, nosotros el resto.»</span>
+      </div>
+      <div class="face">
+        <span class="pct">15%</span>
+        <span class="who"><span class="name">El Palco</span><span class="seg">El empresario local</span></span>
+        <span class="copy">«Cierre de año con tu equipo.»</span>
+      </div>
+      <div class="face">
+        <span class="pct">10%</span>
+        <span class="who"><span class="name">El Parche</span><span class="seg">El joven fan</span></span>
+        <span class="copy">«Junta al parche y entran.»</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bottle">
+  <div class="wrap">
+    <p class="eyebrow">El premio del escalón seis</p>
+    <h2>La botella no cuesta lo que parece.</h2>
+
+    <div class="bottle-grid">
+      <div>
+        <p class="bigline">La barra es del organizador. El premio se paga a costo de producto, no a precio de venta.</p>
+        <p>Y la mesa premiada va a la barra, donde consume más de lo que costó el premio. Es el único regalo del sistema que <strong>genera ingreso en vez de restarlo</strong>.</p>
+        <p>Sobre todo: una botella de aguardiente sobre la mesa <em>es</em> el concepto de marca hecho objeto. El trabajo convertido en licor, delante de los que lo trabajaron.</p>
+      </div>
+      <div>
+        <p class="eyebrow muted">Por qué el descuento se paga solo</p>
+        <table class="econ">
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Venta suelta</th><th scope="col">Mesa de 6</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Boletas</th><td>1</td><td>6</td></tr>
+            <tr><th scope="row">Quién vendió</th><td>la pauta</td><td>el armador</td></tr>
+            <tr><th scope="row">Costo de adquisición</th><td>1 pauta</td><td>1 pauta</td></tr>
+            <tr><th scope="row">Boletas sin costo</th><td>0</td><td>5</td></tr>
+            <tr><th scope="row">Consumo en barra</th><td>1 persona</td><td>mesa entera</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.3rem;font-size:var(--step--1);color:var(--ink-dim)">El descuento no sale del margen: sale del costo de pauta que no se pagó. Y el armador hace gratis lo que más cuesta — convencer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">La regla que sostiene el mecanismo</p>
+    <h2>Un premio nunca cuesta más que lo que la mesa ahorró.</h2>
+    <p class="lede">El armador trae cinco personas que no se pagaron en pauta. Ese ahorro <em>es</em> el presupuesto del premio. Pasarse de ahí es comprar clientes con pérdida.</p>
+
+    <p class="formula">Techo del premio = CAC × (personas de la mesa − 1)</p>
+
+    <div class="ledger">
+      <div class="col bad">
+        <h3>Consume inventario vendible</h3>
+        <p class="colnote">Cada unidad regalada es una que no se vendió. Se paga caro.</p>
+        <ul>
+          <li>Boletas</li>
+          <li>Upgrades de zona</li>
+          <li>Palcos</li>
+        </ul>
+      </div>
+      <div class="col good">
+        <h3>No consume nada vendible</h3>
+        <p class="colnote">Ya está pagado, ya se está produciendo, y no se agota.</p>
+        <ul>
+          <li>Pantalla LED · tarima</li>
+          <li>Foto y video oficiales</li>
+          <li>Orden y hora de entrada</li>
+          <li>Canje con terceros</li>
+          <li>Prioridad para 2027</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:2.4rem" class="lede"><strong>Por eso el escalón diez se paga con la columna derecha.</strong> Y no es solo aritmética: el que junta a diez personas ya tuvo su descuento en el cuatro y su botella en el seis. Lo que persigue en el diez está declarado en los perfiles como el cuarto trigger del público — <em>reconocimiento social</em>. Que es, convenientemente, lo único que no se agota.</p>
+
+    <div class="prizes">
+      <div class="prize"><span class="cost">$0</span><span class="pname">Nombre de la mesa en pantalla</span><p>La pantalla está alquilada ocho horas. Ver «La Cuadrilla de los Beltrán» frente a 3.000 personas no tiene precio para ese público.</p></div>
+      <div class="prize"><span class="cost">$0</span><span class="pname">Mención desde tarima</span><p>El animador nombra la mesa entre canción y canción.</p></div>
+      <div class="prize"><span class="cost">marginal</span><span class="pname">Foto oficial de la mesa</span><p>El fotógrafo ya está cubriendo. Se entrega al día siguiente, editada. La mesa que repostea su foto es pauta gratis para 2027.</p></div>
+      <div class="prize"><span class="cost">$0</span><span class="pname">Entrada anticipada</span><p>Entran primero y eligen dónde ubicarse. Para una mesa de diez, quedar juntos <em>es</em> el beneficio.</p></div>
+      <div class="prize"><span class="cost">canje</span><span class="pname">Ruta desde su municipio</span><p>El público llega de once municipios y va a tomar. Nadie quiere manejar de vuelta a Ubaté. Se consigue por exposición, no por plata.</p></div>
+      <div class="prize"><span class="cost">$0</span><span class="pname">Precio congelado para 2027</span><p>Cuesta cero hoy y convierte una mesa en una cuenta recurrente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <footer>
+      <span>Rasca Salinera · Una farra pa' borrar cassette</span>
+      <span>Dugoent Producciones · Growth&#42;Stars</span>
+    </footer>
+  </div>
+</section>
+
+</body>
+</html>
