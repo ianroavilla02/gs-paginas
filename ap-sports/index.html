@@ -24,10 +24,14 @@
   html,body{height:100%}
   body{
     margin:0;background:var(--night);color:var(--smoke);
-    font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+    font-family:var(--font);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;
+    overflow:hidden;
   }
-  .wrap{min-height:100%;display:grid;grid-template-columns:1fr 1fr}
-  @media (max-width:860px){.wrap{grid-template-columns:1fr}}
+  .wrap{height:100dvh;display:grid;grid-template-columns:1.05fr 1fr}
+  @media (max-width:860px){
+    body{overflow:auto}
+    .wrap{height:auto;grid-template-columns:1fr}
+  }
 
   /* ---------- imagen ---------- */
   .art{position:relative;background:#1a1a1a;overflow:hidden}
@@ -36,72 +40,74 @@
 
   /* ---------- contenido ---------- */
   .panel{
-    display:flex;flex-direction:column;justify-content:center;gap:clamp(1.6rem,4vw,2.6rem);
-    padding:clamp(2rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);
+    display:flex;flex-direction:column;justify-content:center;gap:clamp(1rem,1.8vh,1.5rem);
+    padding:clamp(1.6rem,3.5vh,2.6rem) clamp(1.5rem,3.5vw,3rem);
+    overflow:hidden;
   }
+  .panel > *{max-width:25rem;width:100%}
   .mark{
-    font-size:.8rem;letter-spacing:.42em;text-transform:uppercase;color:var(--white);margin:0;
+    font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;color:var(--white);margin:0;
   }
   h1{
-    margin:0;font-weight:400;letter-spacing:-.01em;
-    font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.05;color:var(--white);
+    margin:.4rem 0 0;font-weight:400;letter-spacing:-.015em;
+    font-size:clamp(1.7rem,2.5vw,2.4rem);line-height:1.02;color:var(--white);
   }
-  .lede{margin:.9rem 0 0;max-width:34ch;color:var(--smoke)}
+  .lede{margin:.6rem 0 0;max-width:36ch;font-size:.92rem;color:var(--smoke);text-wrap:balance}
   .soon{
-    margin:.7rem 0 0;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gray);
+    margin:.7rem 0 0;font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gray);
   }
 
   /* ---------- formulario ---------- */
-  form{display:flex;flex-direction:column;gap:1.15rem;max-width:26rem}
-  .field{display:flex;flex-direction:column;gap:.35rem}
-  label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+  form{display:flex;flex-direction:column;gap:.8rem;max-width:24rem;width:100%}
+  .field{display:flex;flex-direction:column;gap:.15rem}
+  label{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
   input,select{
-    font-family:var(--font);font-size:1rem;color:var(--white);
+    font-family:var(--font);font-size:.92rem;color:var(--white);
     background:transparent;border:0;border-bottom:1px solid var(--line);
-    padding:.55rem 0;border-radius:0;appearance:none;
+    padding:.35rem 0;border-radius:0;appearance:none;
   }
   select{background-image:linear-gradient(transparent,transparent)}
   option{color:#111}
   input:focus-visible,select:focus-visible{outline:none;border-bottom-color:var(--white)}
   input::placeholder{color:rgba(243,243,243,.35)}
 
-  .consent{display:flex;gap:.7rem;align-items:flex-start;font-size:.82rem;color:var(--gray);line-height:1.45}
+  .consent{display:flex;gap:.6rem;align-items:flex-start;font-size:.72rem;color:var(--gray);line-height:1.4;text-transform:none;letter-spacing:0;margin-top:.2rem}
   .consent input{
-    appearance:none;width:1.05rem;height:1.05rem;flex:0 0 auto;margin-top:.15rem;
+    appearance:none;width:.95rem;height:.95rem;flex:0 0 auto;margin-top:.1rem;
     border:1px solid var(--line);background:transparent;border-radius:0;padding:0;
   }
   .consent input:checked{background:var(--white);border-color:var(--white)}
   .consent a{color:var(--smoke)}
 
   button{
-    font-family:var(--font);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
-    background:var(--white);color:var(--night);border:0;padding:1.05rem 1.5rem;cursor:pointer;
-    transition:opacity .15s ease;
+    font-family:var(--font);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    background:var(--white);color:var(--night);border:0;padding:.8rem 1.3rem;cursor:pointer;
+    margin-top:.2rem;transition:opacity .15s ease;
   }
   button:hover{opacity:.86}
   button:disabled{opacity:.4;cursor:not-allowed}
   button:focus-visible{outline:2px solid var(--white);outline-offset:3px}
 
-  .msg{font-size:.85rem;color:var(--gray);min-height:1.2em}
+  .msg{font-size:.76rem;color:var(--gray);min-height:1em;margin:0}
   .msg.err{color:#E5A3A3}
 
   /* ---------- gracias ---------- */
-  .done{display:none;flex-direction:column;gap:1.1rem;max-width:26rem}
-  .done h2{margin:0;font-weight:400;font-size:clamp(1.5rem,4vw,2rem);color:var(--white);line-height:1.15}
+  .done{display:none;flex-direction:column;gap:.9rem;max-width:24rem}
+  .done h2{margin:0;font-weight:400;font-size:clamp(1.3rem,2.2vw,1.8rem);color:var(--white);line-height:1.1}
   .done a.ig{
-    align-self:flex-start;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--night);background:var(--white);padding:.95rem 1.4rem;text-decoration:none;
+    align-self:flex-start;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--night);background:var(--white);padding:.8rem 1.25rem;text-decoration:none;
   }
   body.sent form{display:none}
   body.sent .done{display:flex}
 
   footer{
-    display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.78rem;color:var(--gray);
-    padding-top:1.2rem;border-top:1px solid var(--line);
+    display:flex;gap:1.25rem;flex-wrap:wrap;font-size:.7rem;color:var(--gray);
+    padding-top:.9rem;border-top:1px solid var(--line);
   }
   footer a{color:var(--gray);text-decoration:none}
   footer a:hover{color:var(--smoke)}
-  .preview{font-size:.72rem;color:#E5C08A;letter-spacing:.06em}
+  .preview{font-size:.68rem;color:#E5C08A;letter-spacing:.04em;margin:.1rem 0 0}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
