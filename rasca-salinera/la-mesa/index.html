@@ -8,7 +8,7 @@
 <meta property="og:title" content="La Mesa · Rasca Salinera">
 <meta property="og:description" content="Dinámica de referido grupal ligada al arco de marca: tierra, trabajo, licor, fiesta.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0B0808">
+<meta name="theme-color" content="#160A0B">
 <title>La Mesa · Rasca Salinera</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,53 +79,11 @@
   strong{color:var(--oro);font-weight:600}
   em{color:var(--champagne);font-style:italic}
 
-  /* ---------- PORTADA ---------- */
-  .cover{
-    position:relative;
-    padding-block:clamp(4rem,11vw,8.5rem) clamp(3.5rem,8vw,6rem);
-    background:
-      radial-gradient(120% 90% at 50% 118%, rgba(235,179,20,.20) 0%, rgba(189,96,20,.10) 34%, transparent 66%),
-      linear-gradient(178deg, var(--noir) 0%, var(--tierra) 128%);
-    border-bottom:1px solid var(--line-strong);
-    overflow:hidden;
+  /* ---------- APERTURA ---------- */
+  .opening{
+    padding-block:clamp(4rem,10vw,7.5rem) clamp(3.5rem,8vw,7rem);
+    background:linear-gradient(180deg, #160A0B 0%, var(--ground) 62%);
   }
-  .cover::after{
-    content:"";
-    position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);
-    width:min(92%,50rem);height:1px;
-    background:linear-gradient(90deg,transparent,var(--oro),transparent);
-  }
-  .brandline{
-    font-family:var(--body);
-    font-size:var(--step--1);
-    letter-spacing:.34em;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-    margin:0 0 clamp(2rem,5vw,3.2rem);
-  }
-  .cover h1{
-    font-size:var(--step-4);
-    color:var(--oro);
-    letter-spacing:-.005em;
-    margin-bottom:1.2rem;
-  }
-  .cover .sub{
-    font-size:var(--step-1);
-    color:var(--champagne);
-    max-width:34ch;
-    margin-bottom:clamp(2.2rem,5vw,3rem);
-    line-height:1.45;
-  }
-  .coverfacts{
-    display:flex;flex-wrap:wrap;gap:.6rem 2.4rem;
-    padding-top:1.5rem;
-    border-top:1px solid var(--line);
-    font-size:var(--step--1);
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--ink-dim);
-  }
-  .coverfacts b{color:var(--champagne);font-weight:600}
 
   /* ---------- PROBLEMA ---------- */
   .compare{
@@ -362,19 +320,17 @@
     }
     *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
 
-    section,.cover{
+    section{
       break-inside:avoid;page-break-inside:avoid;
       break-after:page;page-break-after:always;
       padding-block:16mm;
       min-height:auto;
     }
+    .opening{padding-block:22mm 16mm}
     .closing{break-after:auto;page-break-after:auto;padding-block:0;break-inside:avoid}
     section:last-of-type{break-after:auto;page-break-after:auto}
     section:nth-last-of-type(2){break-after:auto;page-break-after:auto}
 
-    .cover{padding-block:34mm 20mm}
-    .cover h1{font-size:62pt}
-    .cover .sub{font-size:15pt}
     h2{font-size:26pt;margin-bottom:10pt}
     .lede{font-size:12pt}
     .eyebrow{font-size:7.5pt;margin-bottom:8pt}
@@ -407,20 +363,7 @@
 </head>
 <body>
 
-<header class="cover">
-  <div class="wrap">
-    <p class="brandline">Rasca Salinera · Dinámica de activación</p>
-    <h1>La Mesa</h1>
-    <p class="sub">El referido no tiene que inventar un comportamiento. Tiene que premiar el que ya existe.</p>
-    <div class="coverfacts">
-      <span>Sábado <b>5 de diciembre de 2026</b></span>
-      <span>Zipaquirá · <b>Sabana Centro</b></span>
-      <span>Jhonny Rivera · <b>Jhon Alex Castaño</b></span>
-    </div>
-  </div>
-</header>
-
-<section>
+<section class="opening">
   <div class="wrap">
     <p class="eyebrow">El punto de partida</p>
     <h2>Nadie viene solo a una farra.</h2>
@@ -596,8 +539,6 @@
       <div class="prize"><span class="cost">$0</span><span class="pname">Mención desde tarima</span><p>El animador nombra la mesa entre canción y canción.</p></div>
       <div class="prize"><span class="cost">marginal</span><span class="pname">Foto oficial de la mesa</span><p>El fotógrafo ya está cubriendo. Se entrega al día siguiente, editada. La mesa que repostea su foto es pauta gratis para 2027.</p></div>
       <div class="prize"><span class="cost">$0</span><span class="pname">Entrada anticipada</span><p>Entran primero y eligen dónde ubicarse. Para una mesa de diez, quedar juntos <em>es</em> el beneficio.</p></div>
-      <div class="prize"><span class="cost">canje</span><span class="pname">Ruta desde su municipio</span><p>El público llega de once municipios y va a tomar. Nadie quiere manejar de vuelta a Ubaté. Se consigue por exposición, no por plata.</p></div>
-      <div class="prize"><span class="cost">$0</span><span class="pname">Precio congelado para 2027</span><p>Cuesta cero hoy y convierte una mesa en una cuenta recurrente.</p></div>
     </div>
   </div>
 </section>
