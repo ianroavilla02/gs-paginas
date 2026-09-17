@@ -170,7 +170,7 @@
       <div class="field">
         <label for="ciudad">Ciudad</label>
         <select id="ciudad" name="ciudad" autocomplete="address-level2" required>
-          <option value="" selected>Elegí una</option>
+          <option value="" selected>Elige una</option>
           <option value="bogota">Bogotá</option>
           <option value="medellin">Medellín</option>
           <option value="otra-colombia">Otra en Colombia</option>
@@ -284,7 +284,7 @@ function normalizarTel(valor){
   if (/^57(3\d{9})$/.test(d))    return {ok:true, valor:"+" + d};
   if (v.startsWith("+") && d.length >= 8 && d.length <= 15) return {ok:true, valor:"+" + d};
   if (/^\d{10}$/.test(d))        return {ok:false, error:"En Colombia el celular empieza por 3."};
-  return {ok:false, error:"Revisa el número. Si es de otro país, ponelo con +."};
+  return {ok:false, error:"Revisa el número. Si es de otro país, ponlo con +."};
 }
 
 form.addEventListener("submit", async (e) => {
@@ -302,11 +302,11 @@ form.addEventListener("submit", async (e) => {
   const ciudad = fCiudad.value;
 
   // nombre
-  if (nombre.length < 2) return marcar(fNombre, "Escribí tu nombre.");
+  if (nombre.length < 2) return marcar(fNombre, "Escribe tu nombre.");
   if (!/^[\p{L}\p{M}][\p{L}\p{M}\s'.-]*$/u.test(nombre)) return marcar(fNombre, "El nombre solo lleva letras.");
 
   // email
-  if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) return marcar(fEmail, "Revisá el email: falta el @ o el dominio.");
+  if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) return marcar(fEmail, "Revisa el email: falta el @ o el dominio.");
   const dominio = email.split("@")[1];
   if (TYPOS[dominio]){
     const arreglado = email.split("@")[0] + "@" + TYPOS[dominio];
@@ -318,7 +318,7 @@ form.addEventListener("submit", async (e) => {
   const tel = normalizarTel(fTel.value);
   if (!tel.ok) return marcar(fTel, tel.error);
 
-  if (!ciudad) return marcar(fCiudad, "Elegí una ciudad.");
+  if (!ciudad) return marcar(fCiudad, "Elige una ciudad.");
   if (!form.datos.checked) return marcar(document.getElementById("datos"), "Necesitamos tu autorización para escribirte.");
 
   // campo trampa y envio demasiado rapido: bots
@@ -362,7 +362,7 @@ form.addEventListener("submit", async (e) => {
   } catch (err) {
     console.error(err);
     msg.className = "msg err";
-    msg.textContent = "No se pudo enviar. Intentá de nuevo en un momento.";
+    msg.textContent = "No se pudo enviar. Intenta de nuevo en un momento.";
     btn.disabled = false;
   }
 });
