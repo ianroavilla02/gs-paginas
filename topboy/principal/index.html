@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Crew Principal Topboy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --paper:  #FFFFFF;
+    --ground: #F4F4F2;
+    --ink:    #141414;
+    --dim:    #55534F;
+    --faint:  #8A8782;
+    --rule:   #C9C6C0;
+    --rule-2: #E4E2DD;
+    --mark:   #B4552A;
+    --stop:   #A32B20;
+
+    --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+    --body:    "Barlow", system-ui, -apple-system, sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  :root:not([data-theme="light"]) { }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:  #17171B;
+      --ground: #0D0D10;
+      --ink:    #ECEAE6;
+      --dim:    #A5A29C;
+      --faint:  #6F6C67;
+      --rule:   #34332F;
+      --rule-2: #26262A;
+      --mark:   #E08A55;
+      --stop:   #E5695C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:  #17171B;
+    --ground: #0D0D10;
+    --ink:    #ECEAE6;
+    --dim:    #A5A29C;
+    --faint:  #6F6C67;
+    --rule:   #34332F;
+    --rule-2: #26262A;
+    --mark:   #E08A55;
+    --stop:   #E5695C;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--ground); color: var(--ink); font-family: var(--body); font-size: 15.5px; line-height: 1.45; margin: 0; -webkit-font-smoothing: antialiased; }
+  .sheet { background: var(--paper); max-width: 820px; margin: 0 auto; padding: 28px 22px 38px; }
+
+  header.head { border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 8px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+  header.head h1 { font-family: var(--display); font-size: clamp(30px, 9vw, 40px); font-weight: 700; letter-spacing: .01em; text-transform: uppercase; margin: 0; line-height: 1; }
+  header.head .meta { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+
+  nav { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-bottom: 26px; }
+  nav a { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); text-decoration: none; border: 1px solid var(--rule); padding: 4px 8px; }
+  nav a:hover, nav a:focus-visible { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+
+  h2 { font-family: var(--display); font-size: 18px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin: 32px 0 10px; padding-bottom: 5px; border-bottom: 1px solid var(--rule); scroll-margin-top: 12px; }
+  h2:first-of-type { margin-top: 0; }
+  .hint { font-size: 13.5px; color: var(--dim); margin: 0 0 12px; }
+  .hint strong { color: var(--ink); font-weight: 600; }
+
+  .keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 4px; }
+  .key { background: var(--paper); padding: 12px 13px; }
+  .key b { display: block; font-family: var(--mono); font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .key span { display: block; font-size: 12px; line-height: 1.3; color: var(--dim); margin-top: 4px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { border: 1px solid var(--rule); padding: 7px 9px; text-align: left; vertical-align: top; }
+  th { font-family: var(--mono); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; font-weight: 500; color: var(--dim); background: var(--ground); }
+  td.name { font-family: var(--display); font-size: 18px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; width: 112px; line-height: 1.15; }
+  td.time { font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; width: 104px; color: var(--dim); white-space: nowrap; }
+  td.act { font-family: var(--display); font-size: 17px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; width: 168px; line-height: 1.15; }
+  td.op { font-size: 13.5px; color: var(--dim); }
+  td.op strong, td b { color: var(--ink); font-weight: 600; }
+  .val { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--mark); white-space: nowrap; }
+  tr.key td { background: var(--ground); }
+  tr.key td.act { color: var(--stop); }
+  tr.peak td { background: var(--ground); }
+  tr.peak td.act { color: var(--mark); font-size: 20px; }
+  .wide { overflow-x: auto; }
+
+  ol.nev { list-style: none; counter-reset: n; padding: 0; margin: 0; border: 1px solid var(--rule); }
+  ol.nev li { counter-increment: n; display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 10px 12px; font-size: 14.5px; border-bottom: 1px solid var(--rule-2); }
+  ol.nev li:last-child { border-bottom: 0; }
+  ol.nev li::before { content: counter(n); font-family: var(--mono); font-size: 12px; color: var(--stop); padding-top: 2px; }
+  ol.nev li b { font-weight: 600; }
+  ol.nev li b { grid-column: 2; }
+  ol.nev li span { grid-column: 2; display: block; color: var(--dim); font-size: 13px; margin-top: 1px; }
+  ol.nev li.top { background: var(--ground); }
+
+  pre.tree { font-family: var(--mono); font-size: 12px; line-height: 1.7; color: var(--dim); background: var(--ground); border: 1px solid var(--rule); padding: 13px; overflow-x: auto; margin: 0 0 14px; }
+  pre.tree b { color: var(--ink); font-weight: 600; }
+
+  .foot { margin-top: 30px; padding-top: 12px; border-top: 2px solid var(--ink); }
+  .foot .nums { font-family: var(--mono); font-size: 14px; font-variant-numeric: tabular-nums; line-height: 1.9; }
+  .foot .nums b { color: var(--mark); font-weight: 600; }
+  .foot p { font-size: 13px; color: var(--faint); margin: 12px 0 0; }
+
+  @media (max-width: 560px) {
+    .sheet { padding: 22px 15px 30px; }
+    td.name, td.act { width: auto; font-size: 16px; }
+    td.time { width: 76px; font-size: 11.5px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  html { scroll-behavior: smooth; }
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>
+</head>
+<body>
+
+<div class="sheet">
+  <header class="head">
+    <h1>Topboy · Equipo principal</h1>
+    <div class="meta">Sáb 19 sep · Royal Center</div>
+  </header>
+
+  <nav>
+    <a href="#pos">Posiciones</a>
+    <a href="#run">Minuto a minuto</a>
+    <a href="#cam">Cámara</a>
+    <a href="#dron">Drones</a>
+    <a href="#disco">Volcado</a>
+    <a href="#no">Nunca</a>
+  </nav>
+
+  <div class="keys">
+    <div class="key"><b>16:00</b><span>Llegada</span></div>
+    <div class="key"><b>19:10</b><span>Comida, todos</span></div>
+    <div class="key"><b>22:30</b><span>Backup obligatorio</span></div>
+    <div class="key"><b>23:00</b><span>Topboy. Nadie se mueve</span></div>
+  </div>
+
+  <h2 id="pos">Posiciones</h2>
+  <p class="hint">Full access. Video <strong>en crudo</strong>, foto <strong>editada</strong> con tu criterio.</p>
+  <div class="wide">
+  <table>
+    <thead><tr><th>Quién</th><th>Zona</th><th>Qué grabás</th><th>Equipo</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Juanda</td><td class="op">Backstage</td><td class="op"><strong>Foto.</strong> Montaje, artistas, producción. Dron exterior.</td><td class="op">50 · 24-70 · 1.2 · angular</td></tr>
+      <tr><td class="name">Daken</td><td class="op">Backstage</td><td class="op"><strong>Video horizontal.</strong> El antes. Topboy antes de salir, 22:30.</td><td class="op">Sony A7IV</td></tr>
+      <tr><td class="name">Crudo</td><td class="op">Frente</td><td class="op"><strong>Vertical</strong> + foto de frente</td><td class="op">A7IV · 24-70 · 16</td></tr>
+      <tr><td class="name">Will</td><td class="op">Frente</td><td class="op"><strong>Horizontal.</strong> Filmmaking de tarima.</td><td class="op">+ Hi8 · Lark Max</td></tr>
+      <tr><td class="name">Feelings</td><td class="op">Mid</td><td class="op"><strong>Público.</strong> Reacciones, interacción, coros. Spotter del dron.</td><td class="op">85 · 16 · mics DJI</td></tr>
+      <tr><td class="name">Diego</td><td class="op">Mid</td><td class="op"><strong>Dron FPV</strong> + foto de público y escenario</td><td class="op">FPV · 75-300</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="hint" style="margin-top:10px">Cuatro personas más cubren <strong>redes en vertical</strong> desde piso 1 y 2: FACAPS, Tomás, Víctor y Miguel. Tienen su propio brief. Si los ves grabando, no dupliques su ángulo.</p>
+
+  <h2 id="run">Minuto a minuto</h2>
+  <p class="hint">Los shows de artista duran 10 a 20 minutos y no vuelven. <strong>Volcar y comer se hace solo en los sets de DJ.</strong></p>
+  <div class="wide">
+  <table>
+    <tbody>
+      <tr><td class="time">16:00–17:00</td><td class="act">Llegada</td><td class="op"><strong>Dron exterior 16:15:</strong> fila y fachada con luz. Recorrido a pie de la línea de vuelo FPV. Sincronizar relojes.</td></tr>
+      <tr><td class="time">17:00–17:50</td><td class="act">Panda · DJ</td><td class="op">Calibrar con luces reales. <strong>Dron FPV 17:10–17:30.</strong> Público llenando.</td></tr>
+      <tr class="key"><td class="time">17:55–18:05</td><td class="act">Asimétrico</td><td class="op">En posición · 10 min</td></tr>
+      <tr><td class="time">18:10–18:50</td><td class="act">Ali Bby · DJ</td><td class="op"><strong>Backup 1.</strong> B-roll de público. Backstage: llegada de artistas.</td></tr>
+      <tr class="key"><td class="time">18:55–19:05</td><td class="act">Kalido</td><td class="op">En posición · 10 min</td></tr>
+      <tr><td class="time">19:10–19:50</td><td class="act">Feyder · DJ</td><td class="op"><strong>COMIDA — todo el equipo, los dos grupos.</strong> Camerino de producción.</td></tr>
+      <tr class="key"><td class="time">19:55–20:05</td><td class="act">Nikael</td><td class="op">En posición · 10 min</td></tr>
+      <tr><td class="time">20:10–20:40</td><td class="act">Panda · 2° set</td><td class="op">Backstage: producción trabajando. <strong>Diego avisa el vuelo de las 21:00 cara a cara.</strong></td></tr>
+      <tr class="key"><td class="time">20:45–20:55</td><td class="act">Andrés SZ</td><td class="op">En posición · 10 min</td></tr>
+      <tr><td class="time">21:00–21:40</td><td class="act">Mafia · DJ</td><td class="op"><strong>Dron FPV, el vuelo bueno. Backup 2.</strong></td></tr>
+      <tr class="key"><td class="time">21:45–22:00</td><td class="act">Kei Linch</td><td class="op">En posición · 15 min</td></tr>
+      <tr class="key"><td class="time">22:05–22:25</td><td class="act">Jota R + Téllez</td><td class="op">En posición · 20 min</td></tr>
+      <tr><td class="time">22:30–23:00</td><td class="act">DJ RD · cierre</td><td class="op"><strong>Backup 3 — obligatorio, todos.</strong> Daken graba a Topboy antes de salir.</td></tr>
+      <tr class="peak"><td class="time">23:00–23:50</td><td class="act">Topboy</td><td class="op"><strong>Nadie vuelca, nadie come, nadie se mueve.</strong> 50 min.</td></tr>
+      <tr><td class="time">23:50–00:00</td><td class="act">Evacuación</td><td class="op">Dron exterior: salida y tumulto. Entrevistas.</td></tr>
+      <tr><td class="time">00:00–00:20</td><td class="act">Verificación</td><td class="op"><strong>Nadie se va antes de que Ian revise su carpeta.</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="cam">Cámara</h2>
+  <p class="hint">Se aplican antes de las 17:00.</p>
+  <div class="wide">
+  <table>
+    <tbody>
+      <tr><td class="act">Reloj</td><td><span class="val">La hora del celular de Ian</span></td><td class="op">Al minuto. Es lo que permite sincronizar en edición.</td></tr>
+      <tr><td class="act">Obturador</td><td><span class="val">1/50 · 1/100 a 50fps</span></td><td class="op">Más rápido congela y se ve a video casero.</td></tr>
+      <tr><td class="act">Balance</td><td><span class="val">MANUAL · 3200K</span></td><td class="op">En automático el clip pulsa de color y no se arregla.</td></tr>
+      <tr><td class="act">Audio</td><td><span class="val">Siempre grabando</span></td><td class="op">Aunque sea el micrófono de cámara.</td></tr>
+      <tr><td class="act">Formato</td><td><span class="val">4K si podés</span></td><td class="op">Da margen para recortar verticales del horizontal.</td></tr>
+      <tr><td class="act">Slow motion</td><td><span class="val">120 fps · 1/250</span></td><td class="op">Para transiciones. Algunas tomas expresamente.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="dron">Drones</h2>
+  <p class="hint">Piloto <strong>Diego</strong> · spotter <strong>Feelings</strong>. Con gafas FPV el piloto no ve el entorno: <strong>puño cerrado en alto = abortar</strong>, y eso no se discute en el aire.</p>
+  <div class="wide">
+  <table>
+    <thead><tr><th>Vuelo</th><th>Hora</th><th>Qué</th></tr></thead>
+    <tbody>
+      <tr><td class="act">Exterior</td><td class="time">16:15–16:45</td><td class="op">Fila y fachada con luz natural. El sol se va a las 17:55.</td></tr>
+      <tr><td class="act">FPV interior</td><td class="time">17:10–17:30</td><td class="op">Reconocimiento. Línea de vuelo, exposición, <strong>y cuánto humo hay</strong>.</td></tr>
+      <tr><td class="act">FPV interior</td><td class="time">21:00–21:40</td><td class="op"><strong>El vuelo bueno.</strong> Sala llena. Si el humo está denso, se adelanta.</td></tr>
+      <tr><td class="act">Exterior</td><td class="time">23:50–00:00</td><td class="op">Salida y tumulto.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="hint" style="margin-top:10px">Vuela sobre público, de fondo hacia adelante, a la altura del entrepiso. <strong>Nunca sobre la tarima</strong> — el calor del fuego sube. <strong>No se vuela durante Topboy.</strong></p>
+
+  <h2 id="disco">Volcado</h2>
+  <p class="hint">Portátil y disco de 4 TB abiertos en backstage toda la noche. <strong>Ian no está ahí todo el tiempo: el puesto se usa solo.</strong> Hay un cartel con los pasos pegado al lado.</p>
+
+  <pre class="tree"><b>TOPBOY - ROYAL CENTER/</b>
+└── 01 - CRUDOS (EQUIPO PRINCIPAL)/
+    ├── 01 FRENTE/      CRUDO/  WILL/
+    ├── 02 BACKSTAGE/   JUANDA/  DAKEN/
+    ├── 03 MID/         FEELINGS/  DIEGO/
+    └── 04 DRON/        INTERIOR FPV/  EXTERIOR/</pre>
+
+  <div class="wide">
+  <table>
+    <tbody>
+      <tr><td class="act">Tu carpeta</td><td class="op">Copiás ahí y no renombrás nada. La carpeta dice quién y el reloj dice cuándo.</td></tr>
+      <tr><td class="act">Esperá el final</td><td class="op"><strong>El paso que más se falla.</strong> Windows sigue escribiendo aunque la barra se vea llena: esperá a que la ventana de copia desaparezca y expulsá con seguridad. Si desconectás antes, los últimos archivos quedan corruptos.</td></tr>
+      <tr><td class="act">A la mitad</td><td class="op">Tarjeta a la mitad, se vuelca. Se llena siempre en el peor momento.</td></tr>
+      <tr><td class="act">Dos tarjetas</td><td class="op">Rotás: volcás la usada y seguís con la otra.</td></tr>
+      <tr><td class="act">Lector</td><td class="op">Llevá el tuyo. Si no tenés, decilo hoy en el formulario.</td></tr>
+      <tr><td class="act">Marcá la hoja</td><td class="op">Hay un checklist al lado del PC. Marcá cada vez que volcás: <strong>es la única forma de saber quién falta.</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Foto</h2>
+  <p class="hint">No hay LUT ni preset impuesto: <strong>cada quien edita con su criterio.</strong> Lo único que se pide, para que la galería no salga dispareja: <strong>pieles sin virar</strong> y <strong>negros con detalle</strong>. Las luces de escenario ya saturan solas, no hace falta ayudarlas.</p>
+  <p class="hint">Las editadas van a <span style="font-family:var(--mono);font-size:12.5px">03 - FOTO EDITADA / tu nombre</span> en el Drive, los días siguientes.</p>
+
+  <h2 id="no">Nunca</h2>
+  <ol class="nev">
+    <li class="top"><b>Publicar antes del posteo oficial.</b><span>Ni stories. Después, cada quien publica lo suyo con crédito. Si querés sacar algo antes, se pide por el grupo.</span></li>
+    <li class="top"><b>Formatear una tarjeta.</b><span>Ni el domingo para otro trabajo. Todo el material vive en un solo disco: tu tarjeta es la segunda copia hasta que Ian confirme.</span></li>
+    <li><b>Flash durante un show.</b><span>Arruina la foto de los demás y molesta al artista.</span></li>
+    <li><b>Cruzar el frente de tarima durante un show de artista.</b><span>Solo entre sets.</span></li>
+    <li><b>Balance de blancos automático.</b></li>
+    <li><b>Salir del Royal Center con material sin volcar.</b></li>
+    <li><b>Dejar equipo fuera del camerino de producción.</b></li>
+    <li><b>Grabar vertical si tu asignación es horizontal.</b><span>Si todos improvisan formato, no hay after movie.</span></li>
+    <li><b>Improvisar un vuelo fuera de las cuatro ventanas.</b></li>
+  </ol>
+
+  <h2>Sin radio</h2>
+  <p class="hint">No se consiguieron intercomunicadores. En el teatro <strong>nadie oye una llamada ni siente vibrar el celular</strong>: lo que no esté en este brief, no va a pasar.</p>
+  <div class="wide">
+  <table>
+    <tbody>
+      <tr><td class="act">Tu par</td><td class="op">Crudo ↔ Will · Juanda ↔ Daken · Feelings ↔ Diego. <strong>Si tu par se va, vos cubrís.</strong></td></tr>
+      <tr><td class="act">Nos vemos</td><td class="op">Camerino de producción: <strong>18:10 · 19:10 · 21:00 · 22:30</strong></td></tr>
+      <tr><td class="act">Señal</td><td class="op"><strong>Puño cerrado en alto = abortar.</strong> Pulgar arriba = recibido.</td></tr>
+      <tr><td class="act">Ian</td><td class="op">Se mueve por todo el evento. <strong>No hay forma de llamarlo</strong>: lo ubicás en los puntos de encuentro. El PC sí está siempre en backstage.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="foot">
+    <div class="nums">
+      <b>16:00</b> llegada<br>
+      <b>19:10</b> comida, todos<br>
+      <b>22:30</b> backup obligatorio<br>
+      <b>23:00</b> Topboy. Nadie se mueve.
+    </div>
+    <p>Baterías cargadas, tarjetas vacías, botella de agua. La comida y las bebidas están cubiertas.</p>
+  </div>
+</div>
+</body>
+</html>
