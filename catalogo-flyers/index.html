@@ -22,29 +22,25 @@
     animation:respira 14s ease-in-out infinite alternate}
   @keyframes respira{to{transform:translate3d(3%,-3%,0) scale(1.08)}}
 
-  header{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  header{position:relative;z-index:2;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
     padding:clamp(20px,4vw,44px) clamp(16px,4vw,48px) 0}
   .eyebrow{display:inline-block;background:var(--acc);color:#0A0A0A;font-size:11px;font-weight:700;letter-spacing:.16em;padding:3px 8px;margin:0 0 10px}
   h1{font-size:clamp(34px,7vw,84px);font-weight:800;line-height:.92;letter-spacing:-.03em;margin:0;text-transform:uppercase}
   .cuenta{color:var(--soft);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 
-  /* campo de flyers flotando */
-  .campo{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
-    gap:clamp(18px,4vw,56px) clamp(14px,3.4vw,48px);padding:clamp(28px,5vw,64px) clamp(16px,4vw,56px) 120px;max-width:1500px;margin-inline:auto}
-  .flyer{all:unset;cursor:pointer;position:relative;display:block;width:calc(var(--w)*1px);
-    transform:translate3d(calc(var(--px,0)*1px),calc(var(--oy)*1px + var(--py,0)*1px),0) rotate(calc(var(--r)*1deg));
-    transition:transform .5s cubic-bezier(.2,.8,.2,1),filter .4s,opacity .4s;filter:blur(calc(var(--b)*1px));opacity:var(--o)}
-  .flyer .flota{display:block;animation:flota var(--d) ease-in-out var(--dl) infinite alternate}
-  @keyframes flota{from{transform:translateY(-9px)}to{transform:translateY(9px)}}
-  .flyer img{display:block;width:100%;height:auto;border-radius:10px;background:#161616;
+  /* esfera de flyers: las posiciones las calcula el script en cada cuadro */
+  body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+  .campo{position:fixed;inset:0;z-index:1;touch-action:none;cursor:grab}
+  .campo.arrastrando{cursor:grabbing}
+  .flyer{all:unset;cursor:pointer;position:absolute;left:50%;top:50%;width:var(--w);margin-left:calc(var(--w)/-2);
+    transition:scale .25s;will-change:transform,opacity;-webkit-tap-highlight-color:transparent}
+  .flyer img{display:block;width:100%;height:auto;border-radius:10px;background:#161616;pointer-events:none;
     box-shadow:0 18px 50px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
   .flyer .num{position:absolute;left:8px;top:8px;font-size:10px;font-weight:700;letter-spacing:.12em;background:rgba(10,10,10,.72);
-    padding:3px 6px;border-radius:4px;backdrop-filter:blur(6px)}
+    padding:3px 6px;border-radius:4px}
   .flyer .mas{position:absolute;right:8px;top:8px;font-size:10px;font-weight:700;background:var(--acc);color:#0A0A0A;padding:3px 6px;border-radius:4px}
-  .flyer:hover,.flyer:focus-visible{filter:none;opacity:1;z-index:3;
-    transform:translate3d(calc(var(--px,0)*1px),calc(var(--oy)*1px + var(--py,0)*1px - 6px),0) rotate(0) scale(1.06)}
+  .flyer:hover{scale:1.1}
   .flyer:focus-visible img{outline:2px solid var(--acc);outline-offset:4px}
-  @media (max-width:640px){.flyer{width:calc(var(--w)*.62px)}}
 
   /* tarjeta */
   .velo{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:rgba(6,6,6,.78);backdrop-filter:blur(18px);
@@ -56,7 +52,7 @@
     transition:transform .18s ease-out,aspect-ratio .4s ease;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);will-change:transform}
   .velo.on .tarjeta{--sc:1}
   @media (max-aspect-ratio:3/4){.tarjeta{height:auto;width:min(calc(100vw - 32px),520px)}}
-  .tarjeta .pieza{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+  .tarjeta .pieza{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
   .tarjeta .pieza.on{opacity:1}
   .brillo{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:var(--go,0);transition:opacity .3s;
     background:radial-gradient(60% 50% at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.55),transparent 70%)}
@@ -76,7 +72,7 @@
   #cerrar{top:max(16px,env(safe-area-inset-top));right:16px}
   #ant{left:16px;top:50%;transform:translateY(-50%)} #sig{right:16px;top:50%;transform:translateY(-50%)}
   @media (max-width:640px){#ant,#sig{top:auto;bottom:max(64px,calc(env(safe-area-inset-bottom) + 64px));transform:none}}
-  @media (prefers-reduced-motion:reduce){.glow,.flyer .flota{animation:none}.tarjeta{transition:none}}
+  @media (prefers-reduced-motion:reduce){.glow{animation:none}.tarjeta{transition:none}}
 </style>
 </head>
 <body>
@@ -100,33 +96,74 @@ const campo = $("#campo"), velo = $("#velo"), tarjeta = $("#tarjeta");
 const piezas = EVENTOS.reduce((n,e)=>n+e.s.length,0);
 $("#cuenta").textContent = EVENTOS.length + " eventos · " + piezas + " piezas";
 
-// aleatorio estable: el campo se ve igual en cada visita
-let semilla = 7; const azar = () => (semilla = (semilla*16807) % 2147483647) / 2147483647;
-
-EVENTOS.forEach((e,i) => {
-  const prof = azar();                       // 0 = lejos, 1 = cerca
+// ── esfera ──
+// Cada flyer es un punto sobre una esfera (espiral de Fibonacci). Gira sola; el mouse la dirige
+// mientras se mueve y, al quedarse quieto, vuelve a girar sola. Con el dedo o clic sostenido se arrastra.
+const N = EVENTOS.length, AUREO = Math.PI * (3 - Math.sqrt(5));
+const flyers = EVENTOS.map((e,i) => {
+  const y = 1 - (i + .5) * 2 / N, r = Math.sqrt(1 - y*y), a = i * AUREO;
   const b = document.createElement("button");
-  b.className = "flyer"; b.dataset.i = i; b.dataset.prof = prof;
-  b.setAttribute("aria-label", "Evento " + e.n);
-  b.style.cssText = `--w:${Math.round(150+prof*110)};--oy:${Math.round((azar()-.5)*70)};--r:${((azar()-.5)*9).toFixed(1)};`
-    + `--b:${prof<.25?1.6:0};--o:${(.62+prof*.38).toFixed(2)};--d:${(5+azar()*5).toFixed(1)}s;--dl:-${(azar()*6).toFixed(1)}s`;
-  b.innerHTML = `<span class="flota"><img loading="lazy" src="${e.s[0].th}" width="${e.s[0].w}" height="${e.s[0].h}" alt="">`
-    + `<span class="num">${e.n}</span>${e.s.length>1?`<span class="mas">${e.s.length}</span>`:""}</span>`;
-  b.onclick = () => abrir(i);
+  b.className = "flyer"; b.setAttribute("aria-label", "Evento " + e.n);
+  b.innerHTML = `<img src="${e.s[0].th}" width="${e.s[0].w}" height="${e.s[0].h}" alt="" draggable="false">`
+    + `<span class="num">${e.n}</span>${e.s.length>1?`<span class="mas">${e.s.length}</span>`:""}`;
+  b.onclick = () => { if (!huboArrastre) abrir(i); };
   campo.append(b);
+  return {el: b, x: Math.cos(a)*r, y, z: Math.sin(a)*r, ar: e.s[0].h / e.s[0].w};
 });
 
-// paralaje: lo cercano se mueve más que lo lejano
-let px = 0, py = 0, pend = false;
-addEventListener("pointermove", ev => {
-  if (ev.pointerType !== "mouse" || velo.classList.contains("on")) return;
-  px = ev.clientX/innerWidth - .5; py = ev.clientY/innerHeight - .5;
-  if (pend) return; pend = true;
-  requestAnimationFrame(() => { pend = false;
-    campo.querySelectorAll(".flyer").forEach(f => { const k = 10 + f.dataset.prof*34;
-      f.style.setProperty("--px", (-px*k).toFixed(1)); f.style.setProperty("--py", (-py*k).toFixed(1)); });
-  });
+const GIRO_SOLO = .0032;                       // radianes por cuadro
+let rotY = 0, rotX = -.18, velY = GIRO_SOLO, velX = 0, metaY = GIRO_SOLO, metaX = 0;
+let radio = 300, ancho = 150, desfase = 0, quieto = null, arrastre = null, huboArrastre = false;
+
+function medir(){
+  const w = campo.clientWidth, h = campo.clientHeight;
+  ancho = Math.max(96, Math.min(190, Math.min(w, h) * .24));
+  radio = Math.max(130, Math.min(w * .5 - ancho * .45, h * .5 - ancho * .7));
+  desfase = h * .04;                             // un poco más abajo, para dejar aire al título
+  campo.style.setProperty("--w", ancho.toFixed(0) + "px");
+}
+addEventListener("resize", medir); medir();
+
+function cuadro(){
+  requestAnimationFrame(cuadro);
+  if (velo.classList.contains("on")) return;
+  if (!arrastre) { velY += (metaY - velY) * .05; velX += (metaX - velX) * .05; rotY += velY; rotX += velX; }
+  rotX = Math.max(-1.1, Math.min(1.1, rotX));
+  const cy = Math.cos(rotY), sy = Math.sin(rotY), cx = Math.cos(rotX), sx = Math.sin(rotX);
+  for (const f of flyers) {
+    const x1 = f.x*cy + f.z*sy, z1 = -f.x*sy + f.z*cy;         // giro horizontal
+    const y2 = f.y*cx - z1*sx, z2 = f.y*sx + z1*cx;            // inclinación
+    const p = 1 / (1.32 - z2 * .32);                           // perspectiva: lo cercano, más grande
+    const alto = ancho * f.ar;
+    f.el.style.transform = `translate3d(${(x1*radio*p).toFixed(1)}px,${(y2*radio*p - alto/2 + desfase).toFixed(1)}px,0) scale(${p.toFixed(3)})`;
+    f.el.style.opacity = (.22 + .78 * (z2 + 1) / 2).toFixed(2);
+    f.el.style.zIndex = Math.round((z2 + 1) * 100);
+    f.el.style.filter = z2 < -.35 ? "blur(2px)" : "";
+  }
+}
+cuadro();
+
+function soltar(){ clearTimeout(quieto); quieto = setTimeout(() => { metaY = GIRO_SOLO; metaX = 0; }, 1400); }
+campo.addEventListener("pointermove", ev => {
+  if (arrastre) {
+    const dx = ev.clientX - arrastre.x, dy = ev.clientY - arrastre.y;
+    if (Math.abs(dx) + Math.abs(dy) > 6) huboArrastre = true;
+    rotY = arrastre.ry + dx * .006; rotX = arrastre.rx - dy * .006;
+    velY = (ev.clientX - arrastre.ux) * .006; velX = -(ev.clientY - arrastre.uy) * .006;
+    arrastre.ux = ev.clientX; arrastre.uy = ev.clientY;
+    return;
+  }
+  if (ev.pointerType !== "mouse") return;
+  const r = campo.getBoundingClientRect();
+  metaY = ((ev.clientX - r.left) / r.width - .5) * .05;       // el mouse marca hacia dónde y qué tan rápido gira
+  metaX = -((ev.clientY - r.top) / r.height - .5) * .03;
+  soltar();
 });
+campo.addEventListener("pointerdown", ev => { huboArrastre = false;
+  arrastre = {x: ev.clientX, y: ev.clientY, ux: ev.clientX, uy: ev.clientY, ry: rotY, rx: rotX}; campo.classList.add("arrastrando"); });
+addEventListener("pointerup", () => { if (!arrastre) return; arrastre = null; campo.classList.remove("arrastrando");
+  metaY = Math.abs(velY) > .001 ? Math.sign(velY) * GIRO_SOLO : GIRO_SOLO; metaX = 0; });
+campo.addEventListener("pointerleave", () => { if (!arrastre) { metaY = GIRO_SOLO; metaX = 0; } });
 
 // tarjeta
 let actual = -1, idx = 0, reloj = null;
@@ -152,11 +189,11 @@ function mostrar(k){
   els.forEach((el,j) => { el.classList.toggle("on", j === idx); if (el.tagName === "VIDEO") { if (j === idx) { el.currentTime = 0; el.play().catch(()=>{}); } else el.pause(); } });
   $("#rotulo").textContent = "EVENTO " + e.n + (e.s.length > 1 ? " · " + (idx+1) + " / " + e.s.length : "");
   if (e.s.length < 2) return;
-  // las imágenes cambian cada 3 s; un video se deja terminar antes de pasar al siguiente
-  const dur = s.t === "vid" ? null : 3000;
+  // las imágenes cambian cada 1 s; un video se deja terminar antes de pasar al siguiente
+  const dur = s.t === "vid" ? null : 1000;
   $("#puntos").querySelectorAll("button").forEach((p,j) => { p.className = j < idx ? "hecho" : j === idx ? "on" : ""; });
   const punto = $("#puntos").children[idx];
-  if (dur) { punto.style.setProperty("--t", "3s"); reloj = setTimeout(() => mostrar(idx+1), dur); }
+  if (dur) { punto.style.setProperty("--t", "1s"); reloj = setTimeout(() => mostrar(idx+1), dur); }
   else { const v = els[idx]; const listo = () => { punto.style.setProperty("--t", (v.duration||15) + "s"); punto.className = ""; void punto.offsetWidth; punto.className = "on"; };
     v.readyState >= 1 ? listo() : v.addEventListener("loadedmetadata", listo, {once:true});
     v.onended = () => mostrar(idx+1); }
