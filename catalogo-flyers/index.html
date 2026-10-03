@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>CATÁLOGO DE FLYERS · GROWTH*STARS</title>
+<title>FLYERS EVENTOS · GROWTH*Stars</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
@@ -26,7 +26,7 @@
     padding:clamp(20px,4vw,44px) clamp(16px,4vw,48px) 0}
   .eyebrow{display:inline-block;background:var(--acc);color:#0A0A0A;font-size:11px;font-weight:700;letter-spacing:.16em;padding:3px 8px;margin:0 0 10px}
   h1{font-size:clamp(34px,7vw,84px);font-weight:800;line-height:.92;letter-spacing:-.03em;margin:0;text-transform:uppercase}
-  .cuenta{color:var(--soft);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  .logo{display:block;height:clamp(16px,2vw,22px);width:auto;margin:0 0 14px}
 
   /* esfera de flyers: las posiciones las calcula el script en cada cuadro */
   body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
@@ -44,15 +44,15 @@
 
   /* tarjeta */
   .velo{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:rgba(6,6,6,.78);backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity .35s;perspective:1400px;
+    -webkit-backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity .15s;perspective:1400px;
     padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
   .velo.on{opacity:1;pointer-events:auto}
   .tarjeta{position:relative;height:min(78vh,820px);max-width:calc(100vw - 32px);aspect-ratio:var(--ar,4/5);border-radius:18px;overflow:hidden;background:#111;
     transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--sc,.92));transform-style:preserve-3d;
-    transition:transform .18s ease-out,aspect-ratio .4s ease;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);will-change:transform}
+    transition:transform .18s ease-out,aspect-ratio .25s ease;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);will-change:transform}
   .velo.on .tarjeta{--sc:1}
   @media (max-aspect-ratio:3/4){.tarjeta{height:auto;width:min(calc(100vw - 32px),520px)}}
-  .tarjeta .pieza{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+  .tarjeta .pieza{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s}
   .tarjeta .pieza.on{opacity:1}
   .brillo{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:var(--go,0);transition:opacity .3s;
     background:radial-gradient(60% 50% at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.55),transparent 70%)}
@@ -78,8 +78,7 @@
 <body>
 <div class="glow"></div>
 <header>
-  <div><p class="eyebrow">GROWTH*STARS</p><h1>Catálogo<br>de flyers</h1></div>
-  <div class="cuenta" id="cuenta"></div>
+  <div><img class="logo" src="media/gs-logo.png" alt="GROWTH*Stars" width="640" height="87"><h1>Flyers<br>eventos</h1></div>
 </header>
 <main class="campo" id="campo"></main>
 
@@ -90,11 +89,9 @@
 <button class="ctrl" id="sig" aria-label="Evento siguiente">→</button>
 
 <script>
-const EVENTOS = [{"n":"01","s":[{"t":"img","src":"media/e01-2.webp","th":"media/e01-2-t.webp","w":1170,"h":1456},{"t":"vid","src":"media/e01-1.mp4","th":"media/e01-1-t.webp","w":720,"h":896}]},{"n":"02","s":[{"t":"img","src":"media/e02-1.webp","th":"media/e02-1-t.webp","w":1400,"h":1750},{"t":"vid","src":"media/e02-2.mp4","th":"media/e02-2-t.webp","w":720,"h":900}]},{"n":"03","s":[{"t":"vid","src":"media/e03-1.mp4","th":"media/e03-1-t.webp","w":720,"h":900}]},{"n":"04","s":[{"t":"img","src":"media/e04-1.webp","th":"media/e04-1-t.webp","w":1353,"h":1800},{"t":"vid","src":"media/e04-2.mp4","th":"media/e04-2-t.webp","w":720,"h":958}]},{"n":"05","s":[{"t":"img","src":"media/e05-1.webp","th":"media/e05-1-t.webp","w":1400,"h":1750}]},{"n":"06","s":[{"t":"img","src":"media/e06-1.webp","th":"media/e06-1-t.webp","w":1170,"h":1463},{"t":"vid","src":"media/e06-2.mp4","th":"media/e06-2-t.webp","w":720,"h":900}]},{"n":"07","s":[{"t":"vid","src":"media/e07-1.mp4","th":"media/e07-1-t.webp","w":720,"h":900}]},{"n":"08","s":[{"t":"img","src":"media/e08-1.webp","th":"media/e08-1-t.webp","w":1400,"h":1750},{"t":"img","src":"media/e08-2.webp","th":"media/e08-2-t.webp","w":1400,"h":1750},{"t":"img","src":"media/e08-3.webp","th":"media/e08-3-t.webp","w":1400,"h":1750}]},{"n":"09","s":[{"t":"vid","src":"media/e09-1.mp4","th":"media/e09-1-t.webp","w":360,"h":450},{"t":"vid","src":"media/e09-2.mp4","th":"media/e09-2-t.webp","w":360,"h":450},{"t":"vid","src":"media/e09-3.mp4","th":"media/e09-3-t.webp","w":360,"h":450}]},{"n":"10","s":[{"t":"img","src":"media/e10-1.webp","th":"media/e10-1-t.webp","w":1086,"h":1448},{"t":"vid","src":"media/e10-2.mp4","th":"media/e10-2-t.webp","w":720,"h":960}]},{"n":"11","s":[{"t":"img","src":"media/e11-1.webp","th":"media/e11-1-t.webp","w":1170,"h":1463},{"t":"img","src":"media/e11-2.webp","th":"media/e11-2-t.webp","w":1170,"h":1463}]},{"n":"12","s":[{"t":"img","src":"media/e12-1.webp","th":"media/e12-1-t.webp","w":1170,"h":1458}]},{"n":"13","s":[{"t":"img","src":"media/e13-1.webp","th":"media/e13-1-t.webp","w":1170,"h":1463}]},{"n":"14","s":[{"t":"img","src":"media/e14-1.webp","th":"media/e14-1-t.webp","w":872,"h":1090}]},{"n":"15","s":[{"t":"img","src":"media/e15-1.webp","th":"media/e15-1-t.webp","w":470,"h":587}]},{"n":"16","s":[{"t":"img","src":"media/e16-1.webp","th":"media/e16-1-t.webp","w":446,"h":558},{"t":"img","src":"media/e16-2.webp","th":"media/e16-2-t.webp","w":445,"h":556}]},{"n":"17","s":[{"t":"img","src":"media/e17-1.webp","th":"media/e17-1-t.webp","w":868,"h":1085}]}];
+const EVENTOS = [{"n":"01","s":[{"t":"img","src":"media/e01-2.webp","th":"media/e01-2-t.webp","w":1170,"h":1456},{"t":"vid","src":"media/e01-1.mp4","th":"media/e01-1-t.webp","w":720,"h":896}]},{"n":"02","s":[{"t":"img","src":"media/e02-1.webp","th":"media/e02-1-t.webp","w":1400,"h":1750},{"t":"vid","src":"media/e02-2.mp4","th":"media/e02-2-t.webp","w":720,"h":900}]},{"n":"03","s":[{"t":"vid","src":"media/e03-1.mp4","th":"media/e03-1-t.webp","w":720,"h":900}]},{"n":"04","s":[{"t":"img","src":"media/e04-1.webp","th":"media/e04-1-t.webp","w":1353,"h":1800},{"t":"vid","src":"media/e04-2.mp4","th":"media/e04-2-t.webp","w":720,"h":958}]},{"n":"05","s":[{"t":"img","src":"media/e05-1.webp","th":"media/e05-1-t.webp","w":1400,"h":1750}]},{"n":"06","s":[{"t":"vid","src":"media/e06-2.mp4","th":"media/e06-2-t.webp","w":720,"h":900},{"t":"img","src":"media/e06-1.webp","th":"media/e06-1-t.webp","w":1170,"h":1463}]},{"n":"07","s":[{"t":"vid","src":"media/e07-1.mp4","th":"media/e07-1-t.webp","w":720,"h":900}]},{"n":"08","s":[{"t":"img","src":"media/e08-3.webp","th":"media/e08-3-t.webp","w":1400,"h":1750},{"t":"img","src":"media/e08-1.webp","th":"media/e08-1-t.webp","w":1400,"h":1750},{"t":"img","src":"media/e08-2.webp","th":"media/e08-2-t.webp","w":1400,"h":1750}]},{"n":"09","s":[{"t":"vid","src":"media/e09-1.mp4","th":"media/e09-1-t.webp","w":360,"h":450},{"t":"vid","src":"media/e09-2.mp4","th":"media/e09-2-t.webp","w":360,"h":450},{"t":"vid","src":"media/e09-3.mp4","th":"media/e09-3-t.webp","w":360,"h":450}]},{"n":"10","s":[{"t":"vid","src":"media/e10-2.mp4","th":"media/e10-2-t.webp","w":720,"h":960},{"t":"img","src":"media/e10-1.webp","th":"media/e10-1-t.webp","w":1086,"h":1448}]},{"n":"11","s":[{"t":"img","src":"media/e11-2.webp","th":"media/e11-2-t.webp","w":1170,"h":1463},{"t":"img","src":"media/e11-1.webp","th":"media/e11-1-t.webp","w":1170,"h":1463}]},{"n":"12","s":[{"t":"img","src":"media/e12-1.webp","th":"media/e12-1-t.webp","w":1170,"h":1458}]},{"n":"13","s":[{"t":"img","src":"media/e13-1.webp","th":"media/e13-1-t.webp","w":1170,"h":1463}]},{"n":"14","s":[{"t":"img","src":"media/e14-1.webp","th":"media/e14-1-t.webp","w":872,"h":1090}]},{"n":"15","s":[{"t":"img","src":"media/e15-1.webp","th":"media/e15-1-t.webp","w":470,"h":587}]},{"n":"16","s":[{"t":"img","src":"media/e16-1.webp","th":"media/e16-1-t.webp","w":446,"h":558},{"t":"img","src":"media/e16-2.webp","th":"media/e16-2-t.webp","w":445,"h":556}]},{"n":"17","s":[{"t":"img","src":"media/e17-1.webp","th":"media/e17-1-t.webp","w":868,"h":1085}]}];
 const $ = s => document.querySelector(s);
 const campo = $("#campo"), velo = $("#velo"), tarjeta = $("#tarjeta");
-const piezas = EVENTOS.reduce((n,e)=>n+e.s.length,0);
-$("#cuenta").textContent = EVENTOS.length + " eventos · " + piezas + " piezas";
 
 // ── esfera ──
 // Cada flyer es un punto sobre una esfera (espiral de Fibonacci). Gira sola; el mouse la dirige
@@ -173,8 +170,8 @@ function abrir(i){
   tarjeta.querySelectorAll(".pieza").forEach(p => p.remove());
   e.s.forEach(s => {
     const el = document.createElement(s.t === "vid" ? "video" : "img");
-    el.className = "pieza"; el.src = s.src;
-    if (s.t === "vid") { el.muted = true; el.playsInline = true; el.preload = "metadata"; el.poster = s.th; el.loop = e.s.length === 1; }
+    el.className = "pieza"; el.src = s.src; el.style.background = `#111 url("${s.th}") center/cover`;
+    if (s.t === "vid") { el.muted = true; el.playsInline = true; el.preload = "auto"; el.poster = s.th; el.loop = e.s.length === 1; }
     tarjeta.prepend(el);
   });
   $("#puntos").innerHTML = e.s.length > 1 ? e.s.map((_,k)=>`<button data-k="${k}" aria-label="Pieza ${k+1}"></button>`).join("") : "";
@@ -215,6 +212,10 @@ addEventListener("keydown", ev => {
   if (ev.key === "ArrowRight") abrir(actual+1);
   if (ev.key === "ArrowLeft") abrir(actual-1);
 });
+
+// precarga: al abrir cualquier evento, sus imágenes ya están en caché
+addEventListener("load", () => { const cola = EVENTOS.flatMap(e => e.s.filter(s => s.t === "img").map(s => s.src));
+  (function sig(){ const u = cola.shift(); if (!u) return; const im = new Image(); im.onload = im.onerror = sig; im.src = u; })(); });
 
 // enlace directo a un evento: index.html#e05
 if (/^#e\d+$/.test(location.hash)) abrir(+location.hash.slice(2)-1);
